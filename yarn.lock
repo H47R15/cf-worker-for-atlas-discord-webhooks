@@ -3601,7 +3601,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:2 || 3, readable-stream@npm:3, readable-stream@npm:^3.4.0":
+"readable-stream@npm:2 || 3, readable-stream@npm:^3.4.0":
   version: 3.6.2
   resolution: "readable-stream@npm:3.6.2"
   dependencies:
@@ -4422,15 +4422,16 @@ __metadata:
   linkType: hard
 
 "through2-filter@npm:^3.0.0":
-  version: 3.1.0
-  resolution: "through2-filter@npm:3.1.0"
+  version: 3.0.0
+  resolution: "through2-filter@npm:3.0.0"
   dependencies:
-    through2: "npm:^4.0.2"
-  checksum: 10c0/78efd97421df7dbb6b5186266a45c0f3e26d371328d3fea42f4bd8998974c5a67f676ad20b46c4c69bf6720f9fe0be3dc0fc5d2d4566482efd2f1371aac478de
+    through2: "npm:~2.0.0"
+    xtend: "npm:~4.0.0"
+  checksum: 10c0/741d9144dbbafca3a4a75fc55a0c062641ac464071118cef2213f35f0a961e3331795c802d5bef915060d07cebd29e6c7079e656845145de4db63c74054b4156
   languageName: node
   linkType: hard
 
-"through2@npm:^2.0.0, through2@npm:^2.0.3":
+"through2@npm:^2.0.0, through2@npm:^2.0.3, through2@npm:~2.0.0":
   version: 2.0.5
   resolution: "through2@npm:2.0.5"
   dependencies:
@@ -4447,15 +4448,6 @@ __metadata:
     inherits: "npm:^2.0.4"
     readable-stream: "npm:2 || 3"
   checksum: 10c0/8ea17efa2ce5b78ef5c52d08e29d0dbdad9c321c2add5192bba3434cae25b2319bf9cdac1c54c3bfbd721438a30565ca6f3f19eb79f62341dafc5a12429d2ccc
-  languageName: node
-  linkType: hard
-
-"through2@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "through2@npm:4.0.2"
-  dependencies:
-    readable-stream: "npm:3"
-  checksum: 10c0/3741564ae99990a4a79097fe7a4152c22348adc4faf2df9199a07a66c81ed2011da39f631e479fdc56483996a9d34a037ad64e76d79f18c782ab178ea9b6778c
   languageName: node
   linkType: hard
 
@@ -4950,7 +4942,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"xtend@npm:^4.0.0, xtend@npm:~4.0.1":
+"xtend@npm:^4.0.0, xtend@npm:~4.0.0, xtend@npm:~4.0.1":
   version: 4.0.2
   resolution: "xtend@npm:4.0.2"
   checksum: 10c0/366ae4783eec6100f8a02dff02ac907bf29f9a00b82ac0264b4d8b832ead18306797e283cf19de776538babfdcb2101375ec5646b59f08c52128ac4ab812ed0e
