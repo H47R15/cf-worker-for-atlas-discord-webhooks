@@ -14,3 +14,6 @@ coverage
 *.swl
 
 .env
+
+yarn.lock
+package-lock.json

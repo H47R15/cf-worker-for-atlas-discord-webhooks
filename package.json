@@ -14,8 +14,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "latest": "^0.2.0",
-    "node": "^23.11.0"
+    "latest": "^0.2.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250402.0",
