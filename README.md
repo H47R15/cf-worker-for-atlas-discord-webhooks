@@ -23,7 +23,7 @@
 \_| |_/\__|_|\__,_|___/  \__\___/  |___/ |_|___/\___\___/|_|  \__,_|        
                                                                             
 ```
-# cd-wh-atlas-to-discord
+# Cloudflare Worker for Mongo Atlas webhooks sending to Discord
 
 A Cloudflare Worker that converts Mongo Atlas webhooks into a Discord-friendly format.  
 This worker receives incoming webhook payloads from Mongo Atlas, reformats them into a Discord message, and forwards the data to a Discord webhook.
@@ -76,13 +76,13 @@ This worker receives incoming webhook payloads from Mongo Atlas, reformats them 
 
 ### Environment Variables
 
-Create a `.env` file at the root of your project (or use Wrangler configuration) with at least the following variable:
+Create a `.env` file at the root of your project (for local usage) with at least the following variable:
 
 ```dotenv
 DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/your_webhook_id/your_webhook_token
 ```
 
-This URL is the Discord webhook endpoint where the reformatted messages will be sent.
+> **Note:** Cloudflare Workers do not automatically use your `.env` file. To securely set the Discord webhook URL in your deployment, use Wrangler’s secret command as described below.
 
 ## Wrangler Installation
 
@@ -91,13 +91,13 @@ The Wrangler CLI is required for deploying Cloudflare Workers.
 1. **Install Wrangler Globally via Yarn**
 
    ```bash
-   yarn global add wrangler
+   yarn global add @cloudflare/wrangler
    ```
 
    Alternatively, if you prefer using npm:
 
    ```bash
-   yarn global add @cloudflare/wrangler       
+   npm install -g @cloudflare/wrangler
    ```
 
 2. **Verify Installation**
@@ -124,37 +124,62 @@ The project uses Gulp to compile the TypeScript files.
   yarn build
   ```
 
-  This will compile the TypeScript source (from `main.ts`) into JavaScript in the `dist` folder.
+  This command compiles the TypeScript source (from `main.ts`) into JavaScript in the `dist` folder.
 
 ### Running Locally
 
-Use Wrangler to run your Cloudflare Worker locally:
+You can test your worker locally using Wrangler:
 
 ```bash
 yarn start
 ```
 
-This will start the worker in a local development environment, letting you test webhook behavior.
+This starts your Worker in a local development environment.
 
 ## Deployment
 
-1. **Ensure you are logged in to Cloudflare via Wrangler:**
+Before deploying, ensure you have set your Discord webhook secret in Cloudflare:
+
+1. **Set the Discord Webhook Secret**
+
+   Using Wrangler, run:
+   
+   ```bash
+   wrangler secret put DISCORD_WEBHOOK_URL
+   ```
+   
+   Follow the prompt to enter your Discord webhook URL (e.g., `https://discord.com/api/webhooks/your_webhook_id/your_webhook_token`).
+
+2. **Deploy Your Worker**
+
+   First, build your project:
 
    ```bash
-   wrangler login
+   yarn build
    ```
 
-2. **Publish the Worker:**
+   Then deploy it:
 
    ```bash
-   wrangler publish
+   wrangler deploy
    ```
 
-Your worker will now be deployed to Cloudflare.
+Your worker will now be deployed to Cloudflare and will use the secret binding for `DISCORD_WEBHOOK_URL`.
 
 ## Usage
 
-Once deployed, configure your Mongo Atlas webhook to point to your Cloudflare Worker URL (e.g., `https://<your-worker-subdomain>.workers.dev`). The worker will parse the incoming Mongo Atlas payload, convert it to a Discord-friendly message, and forward it to your configured Discord webhook.
+Once deployed, configure your Mongo Atlas webhook to point to your Cloudflare Worker URL (e.g., `https://<your-worker-subdomain>.workers.dev`).  
+The worker will parse the incoming Mongo Atlas payload, convert it to a Discord-friendly message, and forward it to your configured Discord webhook.
+
+To test the worker manually, you can use the following cURL command:
+
+```bash
+curl -X POST https://<your-worker-subdomain>.workers.dev \
+     -H "Content-Type: application/json" \
+     -d '{"test": "data"}'
+```
+
+If everything is working, you should get an "OK" response and see your message forwarded to Discord.
 
 ## License
 
@@ -166,7 +191,7 @@ Contributions are welcome! Please open issues or pull requests if you have sugge
 
 ## Credits
 
-- Developed by nikoovic
+- Developed by H47R15
 - Inspired by the need for seamless integration between Mongo Atlas and Discord through Cloudflare Workers
 
 ---
