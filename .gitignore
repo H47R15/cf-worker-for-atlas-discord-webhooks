@@ -12,3 +12,5 @@ coverage
 *.swo
 *.swm
 *.swl
+
+.env

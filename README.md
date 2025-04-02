@@ -23,7 +23,6 @@
 \_| |_/\__|_|\__,_|___/  \__\___/  |___/ |_|___/\___\___/|_|  \__,_|        
                                                                             
 ```
-
 # cd-wh-atlas-to-discord
 
 A Cloudflare Worker that converts Mongo Atlas webhooks into a Discord-friendly format.  
@@ -35,6 +34,7 @@ This worker receives incoming webhook payloads from Mongo Atlas, reformats them 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
+- [Wrangler Installation](#wrangler-installation)
 - [Development](#development)
 - [Deployment](#deployment)
 - [Usage](#usage)
@@ -59,36 +59,58 @@ This worker receives incoming webhook payloads from Mongo Atlas, reformats them 
 
 1. **Clone the Repository**
 
-```bash
-git clone git@github.com:H47R15/cf-worker-for-atlas-discord-webhooks.git
-cd cd-wh-atlas-to-discord
-```
+   ```bash
+   git clone git@github.com:H47R15/cf-worker-for-atlas-discord-webhooks.git
+   cd cd-wh-atlas-to-discord
+   ```
 
 2. **Install Dependencies**
 
    Using Yarn:
 
-```bash
-yarn install
-```
-
-   Or, if using npm:
-
-```bash
-npm install
-```
+   ```bash
+   yarn install
+   ```
 
 ## Configuration
 
 ### Environment Variables
 
-Create a `.env` file at the root of your project (or configure via Wrangler) with at least the following variable:
+Create a `.env` file at the root of your project (or use Wrangler configuration) with at least the following variable:
 
 ```dotenv
 DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/your_webhook_id/your_webhook_token
 ```
 
 This URL is the Discord webhook endpoint where the reformatted messages will be sent.
+
+## Wrangler Installation
+
+The Wrangler CLI is required for deploying Cloudflare Workers.
+
+1. **Install Wrangler Globally via Yarn**
+
+   ```bash
+   yarn global add wrangler
+   ```
+
+   Alternatively, if you prefer using npm:
+
+   ```bash
+   yarn global add @cloudflare/wrangler       
+   ```
+
+2. **Verify Installation**
+
+   ```bash
+   wrangler --version
+   ```
+
+3. **Login to Cloudflare**
+
+   ```bash
+   wrangler login
+   ```
 
 ## Development
 
@@ -98,9 +120,9 @@ The project uses Gulp to compile the TypeScript files.
 
 - **To Build:**
 
-```bash
-yarn build
-```
+  ```bash
+  yarn build
+  ```
 
   This will compile the TypeScript source (from `main.ts`) into JavaScript in the `dist` folder.
 
@@ -116,17 +138,17 @@ This will start the worker in a local development environment, letting you test 
 
 ## Deployment
 
-1. **Log in to Cloudflare via Wrangler:**
+1. **Ensure you are logged in to Cloudflare via Wrangler:**
 
-```bash
-wrangler login
-```
+   ```bash
+   wrangler login
+   ```
 
 2. **Publish the Worker:**
 
-```bash
-wrangler publish
-```
+   ```bash
+   wrangler publish
+   ```
 
 Your worker will now be deployed to Cloudflare.
 
