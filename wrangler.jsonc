@@ -1,5 +1,8 @@
 {
     "name": "cd-wh-atlas-to-discord",
     "compatibility_date": "2025-04-02",
-    "main": "dist/main.js"
-  }
+    "main": "dist/main.js",
+    "build": {
+        "command": "yarn build"
+    }
+}

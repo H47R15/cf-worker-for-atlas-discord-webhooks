@@ -1,8 +1,5 @@
-"use strict";
 /// <reference types="@cloudflare/workers-types" />
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.fetch = fetch;
-async function fetch(request, env, context) {
+export async function fetch(request, env, context) {
     if (request.method !== "POST") {
         return new Response("Method Not Allowed", { status: 405 });
     }
@@ -37,3 +34,5 @@ async function fetch(request, env, context) {
         return new Response("Error: " + error?.message, { status: 500 });
     }
 }
+// Export a default object with the fetch handler for module worker format
+export default { fetch };

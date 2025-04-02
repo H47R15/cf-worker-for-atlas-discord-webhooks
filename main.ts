@@ -45,3 +45,6 @@ export async function fetch(
     return new Response("Error: " + error?.message, { status: 500 });
   }
 }
+
+// Export a default object with the fetch handler for module worker format
+export default { fetch };
