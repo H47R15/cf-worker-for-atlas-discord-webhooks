@@ -1,19 +1,25 @@
-# glump and yarn project git ignore
-node_modules
-yarn-error.log
-dist
-coverage
-.vscode
-.idea
+# Node modules and build artifacts
+node_modules/
+dist/
+coverage/
+
+# Editor and OS files
+.vscode/
+.idea/
 .DS_Store
 *.log
 *.tmp
 *.swp
 *.swo
-*.swm
-*.swl
 
+# Environment variables
 .env
 
-yarn.lock
-package-lock.json
+# Yarn generated directories - commit the essential ones
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+
+.wrangler/
