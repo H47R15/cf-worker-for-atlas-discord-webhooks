@@ -1,5 +1,5 @@
 {
-    "name": "cd-wh-atlas-to-discord",
+    "name": "cloud-flare-worker",
     "compatibility_date": "2025-04-02",
     "main": "dist/main.js",
     "build": {
