@@ -1,6 +1,6 @@
 {
   "name": "cd-wh-atlas-to-discord",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "packageManager": "yarn@4.5.0",
   "description": "A Cloudflare Worker that converts Mongo Atlas webhooks to Discord webhooks",
   "main": "dist/main.js",

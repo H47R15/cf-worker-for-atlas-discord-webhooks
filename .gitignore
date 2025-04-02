@@ -1,6 +1,5 @@
 # Node modules and build artifacts
 node_modules/
-dist/
 coverage/
 
 # Editor and OS files
